@@ -1,0 +1,150 @@
+%%%%%%%%%%%%%%%%
+% Alexander Powell
+% CSCI 243 Discrete HW #3
+% 9.23.2015
+%%%%%%%%%%%%%%%%
+
+\documentclass[11pt]{article}
+
+\usepackage{times,mathptm}
+\usepackage{pifont}
+\usepackage{exscale}
+\usepackage{latexsym}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+
+\textwidth 6.5in
+\textheight 9in
+\oddsidemargin -0.0in
+\topmargin -0.0in
+
+\parindent 0pt     % How much the first word of a paragraph is indented. 
+\parskip 0pt       % How much extra space to leave between paragraphs.
+
+\begin{document}
+
+\begin{center}             % If you only centering 1 line use \centerline{}
+\begin{LARGE}
+{\bf CSci 243 Homework 3}
+\end{LARGE}
+\vskip 0.25cm      % vertical skip (0.25 cm)
+
+Due: 10:00 am, Wednesday, Sep 23 \\  % force new line
+Alexander Powell
+\end{center}
+
+\begin{enumerate}
+
+\item (7 points) 
+Determine whether these statements are true or false.
+\begin{enumerate}
+\item $\emptyset\in\{\emptyset\}$ $\longrightarrow$ True
+\item $\{\emptyset\}\in\{\{\emptyset\}\}$ $\longrightarrow$ True
+\item $\{\emptyset\}\subset\{\emptyset,\{\emptyset\}\}$ $\longrightarrow$ True
+\item $\{\{\emptyset\}\}\subset\{\emptyset,\{\emptyset\}\}$ $\longrightarrow$ True
+\item $\{\{\emptyset\}\}\subset\{\{\emptyset\},\{\emptyset\}\}$ $\longrightarrow$ True
+\item $\{x\} \subseteq \{x\}$ $\longrightarrow$ True
+\item $\{x\} \in \{x\}$ $\longrightarrow$ False
+\end{enumerate}
+
+\item (6 points) Is each of these sets the power set of a set, where $a$ and $b$ are distinct elements? If yes, give the original set.
+\begin{enumerate}
+\item $\emptyset$
+
+No
+\item $\{\emptyset,\{a\}\}$
+
+Yes, in this case the original set is $\{a\}$.  
+\item $\{\emptyset,\{a\},\{\emptyset,a\}\}$
+
+No
+\item $\{\emptyset,\{a\},\{b\},\{a,b\}\}$
+
+Yes, in this case the original set is $\{a,b\}$.  
+\end{enumerate} 
+
+
+\item (4 points) Show that if $A\subseteq C$ and $B\subseteq D$ then $A\times B\subseteq C\times D$.
+
+\begin{proof}
+
+To prove this, we need to show that for any element of $A \times B$, that element is also in $C \times D$.  To do this, let's take some arbitary $(x,y) \in A \times B$.  That is, $x \in A$ and $y \in B$.  Since $A \subseteq C$ and $B \subseteq D$, then it is clear that $x \in C$ and $y \in D$ and therefore we have that $(x,y) \in C \times D$.  In other words, we have proven that $A \times B \subseteq C \times D$.  
+
+\end{proof}
+
+\item (10 points) For sets $A$, $B$, and $C$, prove that 
+$(B-A)\cup(C-A)=(B\cup C)-A$
+\begin{enumerate}
+\item by showing each side is a subset of the other side
+
+\begin{proof}
+
+Let's start by showing $(B-A)\cup(C-A) \subseteq (B\cup C)-A$.  Let's take any $x \in (B-A)\cup(C-A)$.  Then there are two cases: either $x \in (B-A)$ or $x \in (C-A)$.  In either of those cases, $x$ does not reside in $A$, but in either $B$ or $C$.  Then it is clear that $x \in (B \cup C) - A$.  
+
+Going the other way, to show that $(B\cup C)-A \subseteq (B-A)\cup(C-A)$, again we take some arbitrary element $x \in (B \cup C) - A$.  Then $x \in B$ or $x \in C$ but $x \not \in A$.  This is the equivalent to saying $x \in (B-A)$ or $x \in (C-A)$ so therefore $x \in (B-A) \cup (C-A)$.  
+Therefore, because $(B-A) \cup (C-A) \subseteq (B \cup C) - A$ and $(B \cup C) - A \subseteq (B-A) \cup (C-A)$, then we can conclude that $(B-A)\cup(C-A)=(B\cup C)-A$.  
+
+\end{proof}
+
+\item by using a membership table
+
+\begin{proof}
+
+The membership table for $(B-A)\cup(C-A)=(B\cup C)-A$ is shown below.  
+
+\begin{center}
+\begin{tabular} { |c|c|c|c|c|c|c|c| }
+\hline
+$A$ & $B$ & $C$ & $B-A$ & $C-A$ & $(B-A) \cup (C-A)$ & $B \cup C$ & $(B \cup C)-A$ \\
+\hline
+$0$ & $0$ & $0$ & $0$ & $0$ & $0$ & $0$ & $0$ \\
+$0$ & $0$ & $1$ & $0$ & $1$ & $1$ & $1$ & $1$ \\
+$0$ & $1$ & $0$ & $1$ & $0$ & $1$ & $1$ & $1$ \\
+$0$ & $1$ & $1$ & $1$ & $1$ & $1$ & $1$ & $1$ \\
+$1$ & $0$ & $0$ & $0$ & $0$ & $0$ & $0$ & $0$ \\
+$1$ & $0$ & $1$ & $0$ & $0$ & $0$ & $1$ & $0$ \\
+$1$ & $1$ & $0$ & $0$ & $0$ & $0$ & $1$ & $0$ \\
+$1$ & $1$ & $1$ & $0$ & $0$ & $0$ & $1$ & $0$ \\
+\hline
+\end{tabular}
+\end{center}
+
+Because the columns for $(B-A)\cup(C-A)$ is indentical to the column for $(B\cup C)-A$, we have proven that $(B-A)\cup(C-A)=(B\cup C)-A$.  
+\end{proof}
+
+\end{enumerate}
+
+\item (5 points) Find these values.
+\begin{enumerate}
+\item $\lfloor 1.1\rfloor = 1$
+\item $\lceil 1.1\rceil = 2$
+\item $\lfloor -0.1\rfloor = -1$
+\item $\lceil -0.1\rceil = 0$
+\item $\lfloor \frac{1}{2}+\lceil \frac{1}{2}\rceil\rfloor = \lfloor \frac{1}{2} + 1 \rfloor = 1$.  
+\end{enumerate}
+
+\item (8 points) 
+Determine whether each of these functions from {\bf Z} to {\bf Z} is one-to-one, onto, both, or neither.
+\begin{enumerate}
+\item $f(n)=n-1$
+
+$f(n)$ is both one-to-one and onto.  
+
+\item $f(n)=n^2+1$.
+
+$f(n)$ is neither one-to-one nor onto.  
+
+\item $f(n)=n^3$
+
+$f(n)$ is both one-to-one and onto.  
+
+\item $f(n)=\lceil\frac{n}{2}\rceil$
+
+$f(n)$ is not one-to-one but it is onto.  
+
+\end{enumerate}
+
+\end{enumerate}
+
+\end{document}

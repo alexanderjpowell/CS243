@@ -1,0 +1,189 @@
+\documentclass[11pt]{article}
+
+\usepackage{times,mathptm}
+\usepackage{pifont}
+\usepackage{exscale}
+\usepackage{latexsym}
+\usepackage{amsmath}
+\usepackage{epsfig}
+\usepackage{amsthm}
+
+\textwidth 6.5in
+\textheight 9in
+\oddsidemargin -0.0in
+\topmargin -0.0in
+
+\parindent 0pt     % How much the first word of a paragraph is indented. 
+\parskip 0pt	   % How much extra space to leave between paragraphs.
+
+\begin{document}
+
+\begin{center}             % If you only centering 1 line use \centerline{}
+\begin{LARGE}
+{\bf CSci 243 Homework 1}
+\end{LARGE}
+\vskip 0.25cm      % vertical skip (0.25 cm)
+
+Due: 10:00 am, Wednesday, Sep 9 \\  % force new line
+Alexander Powell
+\end{center}
+
+
+\begin{enumerate}
+
+\item Construct a truth table for each of these compound propositions.
+\begin{enumerate}
+\item (Rosen 1.1/31(c), 3 points) $(p\lor \lnot q)\rightarrow q$
+
+\begin{center}
+\begin{tabular} {|c|c|c|c|c|}
+\hline
+$p$ & $q$ & $\lnot q$ & $p \lor \lnot q$ & $(p \lor \lnot q) \rightarrow q$ \\
+\hline
+$T$ & $T$ & $F$ & $T$ & $T$ \\
+$T$ & $F$ & $T$ & $T$ & $F$ \\
+$F$ & $T$ & $F$ & $F$ & $T$ \\
+$F$ & $F$ & $T$ & $T$ & $F$ \\
+\hline
+\end{tabular}
+\end{center}
+
+\item (7 points) $(p\leftrightarrow q)\rightarrow (r\leftrightarrow s)$
+
+\begin{center}
+\begin{tabular} {|c|c|c|c|c|c|c|}
+\hline
+$p$ & $q$ & $r$ & $s$ & $p \leftrightarrow q$ & $r \leftrightarrow s$ & $(p \leftrightarrow q) \rightarrow (r \leftrightarrow s)$ \\
+\hline
+$T$ & $T$ & $T$ & $T$ & $T$ & $T$ & $T$\\
+$T$ & $T$ & $T$ & $F$ & $T$ & $F$ & $F$\\
+$T$ & $T$ & $F$ & $T$ & $T$ & $F$ & $F$\\
+$T$ & $T$ & $F$ & $F$ & $T$ & $T$ & $T$\\
+$T$ & $F$ & $T$ & $T$ & $F$ & $T$ & $T$\\
+$T$ & $F$ & $T$ & $F$ & $F$ & $F$ & $T$\\
+$T$ & $F$ & $F$ & $T$ & $F$ & $F$ & $T$\\
+$T$ & $F$ & $F$ & $F$ & $F$ & $T$ & $T$\\
+$F$ & $T$ & $T$ & $T$ & $F$ & $T$ & $T$\\
+$F$ & $T$ & $T$ & $F$ & $F$ & $F$ & $T$\\
+$F$ & $T$ & $F$ & $T$ & $F$ & $F$ & $T$\\
+$F$ & $T$ & $F$ & $F$ & $F$ & $T$ & $T$\\
+$F$ & $F$ & $T$ & $T$ & $T$ & $T$ & $T$\\
+$F$ & $F$ & $T$ & $F$ & $T$ & $F$ & $F$\\
+$F$ & $F$ & $F$ & $T$ & $T$ & $F$ & $F$\\
+$F$ & $F$ & $F$ & $F$ & $T$ & $T$ & $T$\\
+\hline
+\end{tabular}
+\end{center}
+
+\end{enumerate}
+
+\item Using logical identities and laws, show the logic equivalence of
+\begin{enumerate}
+\item (Rosen 1.3/16, 5 points) $p\leftrightarrow q$ 
+			and $(p\land q)\lor(\lnot p\land \lnot q)$
+            
+\begin{proof}
+
+$$ p\leftrightarrow q $$
+$$ \equiv (p \rightarrow q) \land (q \rightarrow p) $$
+$$ \equiv (\lnot q \lor p) \land (\lnot p \lor q) $$
+$$ \equiv \lnot q \land (\lnot p \lor q) \lor p \land (\lnot p \lor q) $$
+$$ \equiv (p \land q) \lor (\lnot p \land \lnot q) \lor (p \land \lnot p) \lor (q \land \lnot q) $$
+$$ \equiv (p \land q) \lor (\lnot p \land \lnot q) $$
+
+\end{proof}
+
+\item (Rosen 1.3/28, 5 points) $p\leftrightarrow q$ and $\lnot p \leftrightarrow \lnot q$
+
+\begin{proof}
+
+$$ p\leftrightarrow q $$
+$$ \equiv (q \rightarrow p) \land (p \rightarrow q) $$
+$$ \equiv (p \lor \lnot q) \land (q \lor \lnot p) $$
+$$ \equiv (\lnot(\lnot p) \lor \lnot q) \land (\lnot(\lnot q) \lor \lnot p) $$
+$$ \equiv (\lnot p \rightarrow \lnot q) \land (\lnot q \rightarrow \lnot p) $$
+$$ \equiv \lnot p \leftrightarrow \lnot q  $$
+
+\end{proof}
+
+\end{enumerate}
+
+\item Understanding quantified predicates.
+\begin{enumerate}
+\item (3 points) English to quantified predicates: 
+Use predicates, quantifiers, logical and mathematical operators to express statement:
+``The difference of two negative integers is not necessarily negative''.
+
+{\bf Solution:}
+
+$\exists n < 0$, $\exists m < 0$ $(n - m \geq 0)$
+
+\item (7 points) Quantified predicate to English:
+Give the truth value of each of these statement if the domain of all variables consists of all real numbers. 
+\begin{enumerate}
+\item $\forall n\exists m (n^2 < m)$
+
+For any number $n$, there exists some other number $m$ such that $m$ is greater than $n^2$.  
+
+\item $\exists n\forall m (n<m^2)$
+
+There exists some number $n$ such that for all $m$, $n$ is less than $m^2$.  
+
+\item $\forall n\exists m (n+m = 0)$
+
+For any number $n$ there exists some number $m$ such that the sum of $n$ and $m$ equals $0$.  
+
+\item $\exists n\forall m (nm = m)$
+
+There exists some number $n$ such that for all $m$ the product of $n$ and $m$ equals $m$.  
+
+\item $\exists n\exists m (n^2+m^2 = 4)$
+
+There exist two numbers, $n$ and $m$ such that the sum of their squares equals $4$.  
+
+\item $\exists n\exists m (n+m = 4 \land n-m=1)$
+
+There exist two numbers, $n$ and $m$ such that the sum of $n$ and $m$ equals $4$ and $n$ minus $m$ equals $1$.  
+
+\item $\forall n\forall m \exists p(p = (m+n)/2)$
+
+For any number $n$ and for any number $m$ there exists some other number $p$ such that $p$ equals the sum of $m$ and $n$ divided by $2$.  
+
+\end{enumerate}
+\end{enumerate}
+
+\newpage
+
+\item (Rosen 1.5/30, 10 points) Rewrite each of these statements so that negations appear only within predicates, i.e., so that no negation is outside a quantifier or an expression involving logical operators.
+\begin{enumerate}
+\item 
+$$\lnot\forall x \forall y P(x,y)$$
+$$ \equiv \exists x \exists y \lnot P(x,y) $$
+
+\item 
+$$\lnot\forall y \exists x P(x,y)$$
+$$ \equiv \exists y \forall x \lnot P(x,y) $$
+
+\item 
+$$\lnot\forall y \forall x (P(x,y) \lor Q(x,y))$$
+$$ \equiv \exists y \exists x \lnot (P(x,y) \lor Q(x,y)) $$
+$$ \equiv \exists y \exists x (\lnot P(x,y) \land \lnot Q(x,y)) $$
+
+\item 
+$$\lnot(\exists x\exists y\lnot P(x,y) \land \forall x\forall y Q(x,y))$$
+$$ \equiv \lnot (\exists x \exists y \lnot P(x,y)) \lor \lnot (\forall x \forall y Q(x,y))$$
+$$ \equiv (\forall x \forall y \lnot (\lnot P(x,y))) \lor (\exists x \exists y \lnot Q(x,y)) $$
+$$ \equiv (\forall x \forall y P(x,y)) \lor (\exists x \exists y \lnot Q(x,y)) $$
+
+\item 
+$$\lnot\forall x(\exists y \forall z P(x,y,z) 
+                        \land \exists z\forall y P(x,y,z))$$
+$$ \equiv \exists x \lnot (\exists y \forall z P(x,y,z) \land \exists z \forall y P(x,y,z)) $$
+$$ \equiv \exists x \lnot (\exists y \forall z P(x,y,z)) \lor \lnot (\exists z \forall y P(x,y,z))$$
+$$ \equiv \exists x ((\forall y \exists z \lnot P(x,y,z)) \lor (\forall z \exists y \lnot P(x,y,z)))$$
+                        
+\end{enumerate}
+
+\end{enumerate}
+
+\end{document}

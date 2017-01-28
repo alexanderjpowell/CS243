@@ -1,0 +1,106 @@
+%%%%%%%%%%%%%
+% 
+% Alexander Powell
+% Discrete Structures of Computer Science
+% Homework Assignment #11
+% 12.04.2015
+% 
+%%%%%%%%%%%%%
+
+\documentclass[11pt]{article}
+
+\usepackage{times,mathptm}
+\usepackage{pifont}
+\usepackage{exscale}
+\usepackage{latexsym}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{epsfig}
+\usepackage{graphicx}
+\usepackage{relsize}
+
+\textwidth 6.5in
+\textheight 9in
+\oddsidemargin -0.0in
+\topmargin -0.0in
+
+\parindent 0pt     % How much the first word of a paragraph is indented. 
+\parskip 0pt       % How much extra space to leave between paragraphs.
+
+\begin{document}
+
+\begin{center}             % If you only centering 1 line use \centerline{}
+\begin{LARGE}
+{\bf CSci 243 Homework 11}
+\end{LARGE}
+\vskip 0.25cm      % vertical skip (0.25 cm)
+
+Due: 10:00 am, Friday, December 4 (last day of classes)\\  % force new line
+Alexander Powell
+\end{center}
+Although most answers to the problems below are just one number, 
+ your responses should explain how this number was obtained.
+
+\begin{enumerate}
+\item 
+How many different strings can be made from the letters in {\it AARDVARK}, 
+\begin{enumerate}
+\item (5 points) using all the letters
+
+\textbf{Solution: }
+In this case there are 8 letters to arrange but since there are 3 A's and 2 R's we must divide the total number of permutations by $3!$ and by $2!$, so the solution is $\dfrac{8!}{(3!)(2!)}$
+
+\item (5 points) using all the letters but all three A's must be consecutive.
+
+\textbf{Solution: }
+If all three A's are consecutive, we can treat them as one letter, so there are 6 letters to arrange but there are 2 R's so we divide by 2.  Therefore, the answer is $\dfrac{6!}{2!}$
+
+\end{enumerate}
+
+\item (10 points) Give a formula (in terms of $k$) for the coefficient of 
+$x^k$ in the expansion of $(x+\frac{1}{x})^{100}$, where $k$ is an integer.
+
+\textbf{Solution: }
+To rewrite $(x+\frac{1}{x})^{100}$ in terms of the binomial coefficient, we can show it is equal to 
+$$ \sum\limits_{n=0}^{100}{100 \choose n}\bigg(x^{100-n}\bigg)\bigg(x^{-n}\bigg) $$
+$$ = \sum\limits_{n=0}^{100}{100 \choose n}\bigg(x^{100-2n}\bigg) = \sum\limits_{n=0}^{100}{100 \choose \frac{100-k}{2}}x^k $$
+So, the equation for the coefficient of $x^k$ in terms of $k$ is $\mathlarger{{100 \choose \frac{100-k}{2}}}$.  
+
+\newpage
+
+\item (5 points) Prove the identity ${n\choose r}{r\choose k}={n\choose k}{n-k\choose r-k}$ for integers $n\ge r\ge k\ge 0$.
+
+\textbf{Solution: }
+\begin{proof}
+
+Let's begin by evaluating the left hand side.  We can rewrite ${n\choose r}{r\choose k}$ as 
+$$ \dfrac{n!}{r!(n-r)!} \times \dfrac{r!}{k!(r-k)!} $$
+From here we can cross out the $r!$ on the top and bottom which leaves us with:
+$$ \dfrac{n!}{k!(n-r)!(r-k)!} $$
+\\
+Now, if we evaluate the right hand side of the equation we have ${n\choose k}{n-k\choose r-k}$ which is equivalent to
+$$ \dfrac{n!}{k!(n-k)!} \times \dfrac{(n-k)!}{(r-k)!(n-k-r+k)!} $$
+$$ = \dfrac{n!}{k!(n-r)!(r-k)!} $$
+From here we can see that the two terms are equal and the identity is proven.  
+
+\end{proof}
+
+\item (10 points) Let $G = (V,E)$ be a graph with $|V|=n$ and $|E|=e$.
+Let $M = \max_{v\in V} deg(v)$ and $m = \min_{v\in V} deg(v)$.
+Show that $m\leq 2e/n \leq M$.
+
+\textbf{Solution: }
+We know that $m \times n \leq \sum\limits_{v \in V} deg(v) \leq M \times n$ since $m \leq deg(v) \leq M, \text{ } \forall v \in V$.  
+However, we also know that $\sum\limits_{v \in V} deg(v) = 2e$.  Therefore, we have that $m \times n \leq 2e \leq M \times n$.  By dividing all parts of the inequality by $n$ we get $m \leq \dfrac{2e}{n} \leq M$ concluding the proof.  
+
+\item (5 points) Assume $G = (V,E)$ is a bipartite graph, and that its two partitions have the same number of vertices. Show that $|E| \leq |V|^2/4$.
+
+\textbf{Solution: }
+Since in a bipartite graph we can divide all vertices into two sets where no two vertices in the same set are connected by an edge.  Therefore, we know the maximum number of vertices that any single vertex can be connected to is $\dfrac{|V|}{2}$.  From this, there are $|V| \times \dfrac{|V|}{2}$ pairs of connected nodes.  Finally, we need to divide by 2 to not ``double count" the edges.  Therefore, we have shown that $|E| \leq |V|^2/4$.  
+
+\end{enumerate}
+
+
+
+\end{document}

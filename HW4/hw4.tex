@@ -1,0 +1,162 @@
+\documentclass[11pt]{article}
+
+\usepackage{times,mathptm}
+\usepackage{pifont}
+\usepackage{exscale}
+\usepackage{latexsym}
+\usepackage{amsmath}
+\usepackage{epsfig}
+\usepackage{amsthm}
+\usepackage{amssymb}
+
+\textwidth 6.5in
+\textheight 9in
+\oddsidemargin -0.0in
+\topmargin -0.0in
+
+\parindent 0pt     % How much the first word of a paragraph is indented. 
+\parskip 0pt       % How much extra space to leave between paragraphs.
+
+\begin{document}
+
+\begin{center}             % If you only centering 1 line use \centerline{}
+\begin{LARGE}
+{\bf CSci 243 Homework 4}
+\end{LARGE}
+\vskip 0.25cm      % vertical skip (0.25 cm)
+
+Due: 10:00 am, Wednesday, Sep 30 \\  % force new line
+Alexander Powell
+\end{center}
+
+\begin{enumerate}
+
+\item (12 points)
+For each of these partial sequences of integers, determine the next term of 
+the sequence, and then provide a general formula or rule to generates terms of the
+sequence.
+\begin{enumerate}
+\item $3, 6, 11, 18, 27, 38, 51, 66, 83, 102, \ldots$
+
+The pattern that this sequence follows is $n^2 + 2$ where the first element has index $n = 1$.  Therefore, the next element in the sequence is $123$.  
+
+\item $7, 12, 17, 22, 27, 32, 37, 42, 47, 52, 57, \ldots$
+
+The pattern of this sequence is $2 + 5n$ where the first element has index $n = 1$.  Following this rule, the next term in the sequence will be $62$.  
+
+\item $1, 2, 2, 2, 3, 3, 3, 3, 3, 5, 5, 5, 5, 5, 5, 5, \ldots$
+
+This sequence follows the pattern of the fibonacci numbers in groups of $2n - 1$.  To clarify, the first number in the fibonacci sequence, $1$, will only appear one time because $2(1) - 1 = 1$.  This is then followed by three $2s$ because $2(2) - 1 = 3$ and next five $3s$ because $2(3) - 1 = 5$.  Following this pattern, the next term will be an $8$, but more specifically, there will be nine $8s$, because $2(5) - 1 = 9$.
+
+\item $3, 9, 81, 6561, 43046721 \ldots$
+
+The pattern of this sequence can be thought of as recursive because every term is the previous term squared, and the pattern starts at $3$.  Following the rule, the next term in the sequence will be $185302018881841$.  
+
+\end{enumerate}
+
+\item(4 points) Compute each of these double sums.
+\begin{enumerate}
+\item $\sum_{i=1}^2\sum_{j=2}^4(i+2j) = (1 + 2 \times 2) + (1 + 2 \times 3) + (1 + 2 \times 4) + (2 + 2 \times 2) + (2 + 2 \times 3) + (2 + 2 \times 4) = 45$
+
+
+\item $\sum_{i=0}^2\sum_{j=0}^3(i+3j) = (0 + 3 \times 0) + (0 + 3 \times 1) + (0 + 3 \times 2) + (0 + 3 \times 3) + $
+
+$(1 + 3 \times 0) + (1 + 3 \times 1) + (1 + 3 \times 2) + (1 + 3 \times 3) + $
+
+$(2 + 3 \times 0) + (2 + 3 \times 1) + (2 + 3 \times 2) + (2 + 3 \times 3) = 66$
+
+
+\item $\sum_{i=1}^3\sum_{j=0}^2 i = 1 + 1 + 1 + 2 + 2 + 2 + 3 + 3 + 3 = 18$
+
+
+\item $\sum_{i=0}^2\sum_{j=1}^3 ij^2 = (0 \times 1^2) + (0 \times 2^2) + (0 \times 3^2) + $
+
+$(1 \times 1^2) + (1 \times 2^2) + (1 \times 3^2) + $
+
+$(2 \times 1^2) + (2 \times 2^2) + (2 \times 3^2) = 42$
+
+\end{enumerate}
+
+\newpage
+
+\item(6 points) Compute each of these sums.
+\begin{enumerate}
+\item $\sum_{i=0}^n 5^{i+1}-5^i$
+
+By taking out a constant $5$ and changing the exponent of the first sum, we can write the expression as follows:
+
+$5 \times \sum_{i=0}^n 5^i - \sum_{i=0}^n 5^i$
+
+Now, from the geometric series rule, we can rewrite the expression in terms of $n$:
+$$ 5 \times \frac{5^{n+1}-1}{5-1} - \frac{5^{n+1}-1}{5-1} $$
+$$ = 4 \times \frac{5^{n+1}-1}{4} = 5^{n+1} - 1$$
+
+\item $\sum_{i=0}^{2n} (-3)^i$  (hint: split series in two parts)
+
+By splitting the sum into two parts, we get the following:
+$$ \sum_{i=0}^{2n} (-3)^i = \sum_{i=0}^{n} (-3)^i + \sum_{i = n+1}^{2n} (-3)^i $$
+By using the geometric series rule, we can write the first sum as $\bigg( \frac{(-3)^{n+1} - 1}{(-4)} \bigg)$.  
+
+Also, because we know that for cases where the geometric series does not begin at $i = 0$, we have the following formula:
+$$ \sum_{i = m}^{\infty} r^k = \frac{r^m}{1-r} $$
+By converting the second half of the previous sum into the given form we get:
+$$ \Bigg( \bigg( \frac{(-3)^{n+1}}{4} \bigg) - \bigg( \frac{(-3)^{2n+1}}{4} \bigg) \Bigg) $$
+After putting it all together, we get:
+$$ \Bigg( \frac{(-3)^{n+1} - 1}{(-4)} \Bigg) + \Bigg( \bigg( \frac{(-3)^{n+1}}{4} \bigg) - \bigg( \frac{(-3)^{2n+1}}{4} \bigg) \Bigg) $$
+With a little simplification we have
+$$ \frac{(-3)^{n+1} - 1 - (-3)^{n+1} + (-3)^{2n+1}}{-4} = \frac{(-3)^{2n+1} - 1}{-4} $$
+
+Alternatively, we could have not split the series into two parts and used the geometric series formula as follows:
+$$ \frac{(-3)^{2n+1} - 1}{(-3) - 1} = \frac{(-3)^{2n+1} - 1}{-4} $$
+Which is what we originally found.  
+
+\end{enumerate}
+
+\newpage
+
+\item Consider the series $\sum_{k=2}^{2n+1}\frac{2}{k^2-1}.$
+\begin{enumerate}
+\item (4 points) Write the series as a telescoping series.
+
+We can begin by rewriting the fraction $\frac{2}{k^2-1}$ as $\frac{2}{(k+1)(k-1)}$ which can be manipulated to be $\frac{k+1-k+1}{(k+1)(k-1)}$ or $\frac{(k+1)-(k-1)}{(k+1)(k-1)}$ which equals $\frac{(k+1)}{(k+1)(k-1)} - \frac{(k-1)}{(k+1)(k-1)}$.  This expression can then be transformed into a telescoping series defines as:
+$$ \sum_{k=2}^{2n+1} \frac{1}{k-1} - \frac{1}{k+1} $$
+
+\item (6 points) show 
+$$\sum_{k=2}^{2n+1}\frac{2}{k^2-1}= \frac{3}{2}-\frac{1}{2n+1}-\frac{1}{2n+2}$$
+Hint: write out at least the first six terms and the last two terms, and group them in pairs of two.
+
+In the previous question we were able to transform the series to a telescoping series of the form $\frac{1}{k-1} - \frac{1}{k+1}$.  Using this form, we can write out the first terms as:
+$$ \bigg(\frac{1}{1} - \frac{1}{3}\bigg) + \bigg(\frac{1}{2} - \frac{1}{4}\bigg) + \bigg(\frac{1}{3} - \frac{1}{5}\bigg) + \bigg(\frac{1}{4} - \frac{1}{6}\bigg) + \bigg(\frac{1}{5} - \frac{1}{7}\bigg) + \bigg(\frac{1}{6} - \frac{1}{8}\bigg) + \bigg(\frac{1}{7} - \frac{1}{9}\bigg)$$
+$$ + \dots + \bigg(\frac{1}{2n-1} - \frac{1}{2n+1}\bigg) + \bigg(\frac{1}{2n} - \frac{1}{2n+2}\bigg)$$
+From a little examination, we see that all of the terms cancel out except for the first, third, last, and third to last terms.  This leaves us with the following:
+$$ 1 + \frac{1}{2} - \frac{1}{2n+1} - \frac{1}{2n+2} = \frac{3}{2} - \frac{1}{2n+1} - \frac{1}{2n+2} $$
+and therefore we can conclude that 
+$$\sum_{k=2}^{2n+1}\frac{2}{k^2-1}= \frac{3}{2}-\frac{1}{2n+1}-\frac{1}{2n+2}$$
+
+\end{enumerate}
+
+\newpage
+
+\item (8 points) Prove by induction that $\sum_{i=1}^ni^2=\frac{1}{6}n(n+1)(2n+1)$.
+
+\begin{proof}
+
+Base case: when $i = 1$ we have that $1^2 = 1$ and also that $\frac{1}{6}(1)(1+1)(2(1)+1) = \frac{6}{6} = 1$, so the base case holds.  
+Now, let's assume that this is true when $n=k$.  Then we have that
+$$ \sum_{i=1}^{k} i^2 = \frac{1}{6}k(k+1)(2k+1) $$
+When $n = k + 1$, we get the following:
+$$ \sum_{i=1}^{k+1} i^2 = \sum_{i=1}^{k} i^2 + (k+1)^2 = \frac{1}{6}k(k+1)(2k+1) + (k+1)^2$$
+$$ = \frac{1}{6}(k+1)(k(2k+1)+6(k+1)) = \frac{1}{6}(k+1)(2k^2+7k+6) $$
+$$ = \frac{1}{6}(k+1)(2k+1)(k+2) = \frac{1}{6}(k+1)((k+1)+1)(2(k+1)+1), $$
+Therefore, since the base case is valid and we have shown it is valid for $n=k+1$, we can conclude that it is valid for all $n \geq 1$.  
+
+\end{proof}
+
+\end{enumerate}
+
+\end{document}
+
+
+
+
+

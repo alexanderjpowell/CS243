@@ -1,0 +1,157 @@
+\documentclass[11pt]{article}
+
+\usepackage{times,mathptm}
+\usepackage{pifont}
+\usepackage{exscale}
+\usepackage{latexsym}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{epsfig}
+
+\textwidth 6.5in
+\textheight 9in
+\oddsidemargin -0.0in
+\topmargin -0.0in
+
+\parindent 0pt     % How much the first word of a paragraph is indented. 
+\parskip 0pt       % How much extra space to leave between paragraphs.
+
+\begin{document}
+
+\begin{center}             % If you only centering 1 line use \centerline{}
+\begin{LARGE}
+{\bf CSci 243 Homework 10}
+\end{LARGE}
+\vskip 0.25cm      % vertical skip (0.25 cm)
+
+Due: 09:00 am, Friday, November 20 \\  % force new line
+Alexander Powell
+\end{center}
+Although most answers to the problems below are just one number, 
+ your responses should explain how this number was obtained.
+
+\begin{enumerate}
+
+\item (6 points) 
+Let there be five distinct points on the $xy$ plane with integer coordinates.
+Between any two points of the five points, a line segment can be drawn.
+Show that there must be a line segment with a midpoint that have integer 
+coordinates.
+
+\begin{proof}
+We know the midpoints of two points $(x_1,y_1), \text{ } (x_2,y_2)$ can be written with the formula:
+$$ \bigg( \dfrac{x_1 + x_2}{2}, \text{ } \dfrac{y_1 + y_2}{2} \bigg). $$
+This formula gives us integers for $x$ and $y$ values when $x_1+x_2$ and $y_1+y_2$ are both even.  Also, we get an even result when adding two even numbers or adding two odd numbers, but not when adding an even and an odd number.  Furthermore, an ordered pair can take one of four forms: (odd, odd), (even, even), (even, odd), or (odd, even).  Now, if the midpoint of any two of these points were evaluated it would be non-integral.  However, the since the problem states that we are given $5$ distinct $(x,y)$ coordinates.  Via the pigeon-hole principle, the fifth coordinate must take the same form as one of the above forms and those two points will give us a midpoint with integer coordinates.  
+\end{proof}
+
+\item (3 points each) How many bit strings of length 12 contain
+\begin{enumerate}
+\item exactly three 1s? 
+
+\textbf{Solution: }
+
+We just need to choose the three positions that will contain the 1s.  This can be evaluated by
+$$ {12 \choose 3} = \dfrac{12!}{3!9!} = 220 $$
+
+\item at most three 1s? 
+
+\textbf{Solution: }
+
+This is equivalent to asking for the number of strings that contain three 1s, two 1s, one 1, or zero 1s.  This can be evaluated by
+$$ {12 \choose 3} + {12 \choose 2} + {12 \choose 1} + {12 \choose 0} $$
+$$ 220 + 66 + 12 + 1 = 299 $$
+
+\item at least three 1s? 
+
+\textbf{Solution: }
+
+This can be found in a manner similar to above:
+$$ {12 \choose 3} + {12 \choose 4} + {12 \choose 5} + {12 \choose 6} + {12 \choose 7} + {12 \choose 8} + {12 \choose 9} + {12 \choose 10} + {12 \choose 11} + {12 \choose 12} $$
+$$ 220 + 495 + 792 + 924 + 792 + 495 + 220 66 + 12 + 1 = 4017 $$
+Additionally, we could find it inversely by subtracting from the total number of strings:
+$$ 2^{12} - \bigg( {12 \choose 2} + {12 \choose 1} + {12 \choose 0} \bigg) = 4096 - (66 + 12 + 1) = 4017 $$
+So, we can see the two methods give us equivalent results.  
+
+\item an equal number of 0s and 1s? 
+
+\textbf{Solution: }
+
+To have an equal number of 0s and 1s, this means that the string must have $6$ 1s and $6$ 0s, so the solution is ${12 \choose 6} = 924$.  
+\end{enumerate}
+
+\item In how many ways can a dozen books be placed on four distinguishable shelves
+\begin{enumerate}
+\item (5 points) if the books are indistinguishable copies of the same title?
+
+\textbf{Solution: }
+If books are indistinguishable copies of the same title, we can use the bars and dots strategy.  In this case we would have 12 dots and 3 bars so the solution is 
+$$ {12 + 3 \choose 3} = {15 \choose 3} = 455 $$
+
+\item (5 points) if no two books are the same and the positions of the books on the shelves matter?
+
+\textbf{Solution: }
+In this case, since there are four places to place the first book (4 shelves), five places to put the second book (4 shelves but either left or right of the previous book), six ways to place the the thrid book, and so on.  We can evaluate the solution with
+$$ 4 \times 5 \times 6 \times 7 \times 8 \times 9 \times 10 \times 11 \times 12 \times 13 \times 14 \times 15 = \dfrac{15!}{3!} = 217945728000 $$
+
+\end{enumerate}
+
+\item (10 points) How many ways are there for 10 women and 6 men to 
+stand in a line so that no two men stand next to each other?
+
+\textbf{Solution: }
+
+First, no matter where the men have to stand, we need to take into account the number of arrangements of the women.  This is $10! = 3628800$.  Now, we need the number of ways to arrange the six men between the ten women.  Because there are nine spots between the women and one on each side we need to find how many ways we can arrange six men in eleven positions:
+$$ 6 \time 7 \times 8 \times 9 \times 10 \times 11 = 332640 $$
+Using the product rule to get the total number of of possible arrangements we get:
+$$ 332640 \times 3628800 = 1207084032000 $$
+
+\item (3 points each) 
+How many nonnegative integer solutions are there to the equation 
+$x_1+x_2+x_3+x_4+x_5+x_6=29$, where
+\begin{enumerate}
+\item $x_i>1$ for all $i$? 
+
+\textbf{Solution: }
+
+This means that each variable is greater than or equal to $2$.  This leaves $29 - 2(6) = 17$ remaining values so there are 
+$$ C(6 + 17 - 1,\text{ }17) = 26334 $$
+
+\item $x_1\ge1$, $x_2\ge2$, $x_3\ge3$, $x_4\ge4$, $x_5\ge5$, and $x_6\ge6$? 
+
+\textbf{Solution: }
+
+Since $1 + 2 + 3 + 4 + 5 + 6 = 21$ and $29 - 21 = 8$, then we have used up all but eight values so the answer is
+$$ C(6 + 8 - 1,\text{ }8) = 1287 $$
+
+\item $x_1\le 5$?
+
+\textbf{Solution: }
+
+Since $x_1$ is fixed then we can solve using the sum of six different choose statements (for $0,\ldots, 5$).  This can be expressed by 
+$$ {33 \choose 4} + {32 \choose 4} + {31 \choose 4} + {30 \choose 4} + {29 \choose 4} + {28 \choose 4} = 179976 $$
+
+\item $x_1<8$ and $x_2>8$? 
+
+\textbf{Solution: }
+
+In this case, we will find the number of solutions where $x_2 \geq 9$, which is ${6 + 20 - 1 \choose 20} = 53130$, and then subtract the remaining solutions where $x_1 \leq 7$, which is ${6 + 12 - 1 \choose 12} = 6188$.  So, the solution is $53130 - 6188 = 46942$.  
+
+\end{enumerate}
+
+
+\end{enumerate}
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+

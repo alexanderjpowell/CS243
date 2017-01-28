@@ -1,0 +1,192 @@
+\documentclass[11pt]{article}
+
+\usepackage{times,mathptm}
+\usepackage{pifont}
+\usepackage{exscale}
+\usepackage{latexsym}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{epsfig}
+
+\textwidth 6.5in
+\textheight 9in
+\oddsidemargin -0.0in
+\topmargin -0.0in
+
+\parindent 0pt     % How much the first word of a paragraph is indented. 
+\parskip 0pt	   % How much extra space to leave between paragraphs.
+
+\begin{document}
+
+\begin{center}             % If you only centering 1 line use \centerline{}
+\begin{LARGE}
+{\bf CSci 243 Homework 2}
+\end{LARGE}
+\vskip 0.25cm      % vertical skip (0.25 cm)
+
+Due: 10:00 am, Wednesday, Sep 16\\  % force new line
+Alexander Powell
+\end{center}
+
+\begin{enumerate}
+
+\item (10 points) Prove that if $n$ is an integer 
+and $3n+2$ is even, then $n$ is even using
+\begin{enumerate}
+\item a proof by contraposition.
+
+\begin{proof}
+
+The contrapositive of the above statement can be written as:
+
+If $n$ is odd, then $\lnot($ $n$ is an integer and $3n+2$ is even $)$
+
+$\equiv$ If $n$ is odd, then $n$ is not an integer or $3n+2$ is odd.  
+
+By taking $n$ to be an odd integer, the we can rewrite it as $n = 2k+1, k \in \mathbb{Z}$ and so $3(2k+1)+2 = 6k+3+2 = 6k+4+1 = 2(3k+2) + 1$.  Therefore, we have that $3n+2$ is an odd integer.  Also, because $n$ is defined to be odd, we know that $n$ is an integer because only whole numbers have even/odd properties and so the statement that $n$ is not an integer or $3n+2$ is odd will always evaluate to true when $n$ is odd because $3n+2$ is odd.  
+\end{proof}
+
+\item a proof by contradiction.
+
+\begin{proof}
+
+Let's assume, to the contrary, that $n$ is an integer and $3n+2$ is even and $n$ is odd.  Then we can express $n$ as $n = 2k+1, k \in \mathbb{Z}$.  So we have that $3n+2 = 3(2k+1)+2 = 6k+3+2 = 6k+5 = 2(3k+2) +1$, which is defined to be an odd number.  Because we started out by assuming that $3n+2$ was even, we have reached a contradiction in our assumption, and the original statement holds.  Thus, we have proven that if $n$ is an integer and $3n+2$ is even, then $n$ is even.  
+
+\end{proof}
+
+\end{enumerate}
+(Hint: see a similar set of proofs in the book).
+
+\item (5 points) 
+Disprove the statement that ``for any integer $x>1$, there are positive 
+integers $y, z$, such that $x^2=y^2 + z^2$'', by finding a counterexample.
+
+\begin{proof}
+
+There are many counterexamples to this statement.  Let's take, for example, and $x$ value of $3$.  Then we simply need to find two integers $y, z$ such that $9 = y^2 + z^2$.  
+
+To find these values of $y$ and $z$, we know that have to be positive, and we can conclude that neither can be greater than $3$ because then the sum of the squares of $y$ and $z$ would be $10$ (because the smallest the other variable can be is $1$, and $3^2 + 1^2 = 10$).  To be rigorous, we can look at all the possible cases for $y$ and $z$:
+
+$$(y,z) = (1,1) \rightarrow 9 \neq 2 = 1^2 + 1^2$$
+$$(y,z) = (2,2) \rightarrow 9 \neq 8 = 2^2 + 2^2$$
+$$(y,z) = (3,3) \rightarrow 9 \neq 18 = 3^2 + 3^2$$
+$$(y,z) = (1,2) \rightarrow 9 \neq 5 = 1^2 + 2^2$$
+$$(y,z) = (1,3) \rightarrow 9 \neq 10 = 1^2 + 3^2$$
+$$(y,z) = (2,1) \rightarrow 9 \neq 5 = 2^2 + 1^2$$
+$$(y,z) = (3,1) \rightarrow 9 \neq 10 = 3^2 + 1^2$$
+$$(y,z) = (2,3) \rightarrow 9 \neq 13 = 2^2 + 3^2$$
+$$(y,z) = (3,2) \rightarrow 9 \neq 13 = 3^2 + 2^2$$
+
+And clearly from above, we have constructed a counterexample so the statement above is false.  
+
+\end{proof}
+
+\item (5 points) 
+Use a proof by cases to show that $min(a,min(b,c))=min(min(a,b),c)$ whenever $a, b, c$ are real numbers.
+
+\begin{proof}
+
+There are six cases to consider when proving this statement.  They are:
+
+$$ a < b < c \rightarrow min(a,min(b,c)) = min(min(a,b),c) = a$$
+$$ c < b < a \rightarrow min(a,min(b,c)) = min(min(a,b),c) = c$$
+$$ b < a < c \rightarrow min(a,min(b,c)) = min(min(a,b),c) = b$$
+$$ b < c < a \rightarrow min(a,min(b,c)) = min(min(a,b),c) = b$$
+$$ a < c < b \rightarrow min(a,min(b,c)) = min(min(a,b),c) = a$$
+$$ c < a < b \rightarrow min(a,min(b,c)) = min(min(a,b),c) = c$$
+
+Therefore, in all possible cases, we can see that $min(a,min(b,c))=min(min(a,b),c)$.  
+
+\end{proof}
+
+\item (5 points) Prove that $2\cdot 10^{500}+15$ or $2\cdot 10^{500}+16$ is not a perfect square.
+	Is your proof constructive or nonconstructive?
+
+\begin{proof}
+
+First, we know that the only two perfect squares that differ by $1$ are $0$ and $1$.  Because $2\cdot 10^{500}+16 = (2\cdot 10^{500}+15) + 1$, we know that their difference is $1$.  Finally, because neither $2\cdot 10^{500}+15$ or $2\cdot 10^{500}+16$ equal to $0$ or $1$, we can conclude that at least one of them is not a perfect square.  
+
+This is a nonconstructive proof.  
+
+\end{proof}
+
+\newpage
+\item (5 points) 
+Given three numbers, prove that at least one pair of them has 
+nonnegative product.
+
+\begin{proof}
+
+We can prove this statement using a proof by cases.  There are four cases to consider  They are:
+\begin{enumerate}
+\item All three numbers are positive.
+\item All three numbers are negative.
+\item There are two negatives and one positive.  
+\item There are two positives and one negative.  
+\end{enumerate}
+
+Also, we know that the product of any two nonnegative numbers is nonnegative and the product of any two negative numbers is also nonnegative.  
+
+From this rule, it is clear in case (a) that any pair will have a nonnegative product because they are all nonnegative.
+In case (b), we can also determine that any pair will have a nonnegative product because they are all negative.
+In case (c), taking the product of the pair of negative numbers will give us a nonnegative product.  
+Finally, in case (d), taking the product of the pair of nonnegative numbers will give us a nonnegative product.  
+
+Thus, we have proven that given three numbers, at least one pair of them has 
+nonnegative product.
+
+\end{proof}
+
+\item (5 points)  Prove by induction that $2^n < n!$, $\forall n \geq 4$, where ! denotes the factorial of the number.
+
+\begin{proof}
+
+Base Step: when $n=4$, then $2^4 = 2 \times 2 \times 2 \times 2 = 16 < 4 \times 3 \times 2 = 24$.  So the base step holds.  
+
+Inductive hypothesis:
+
+Assume for $n=k$ that $2^k < k!, \forall k \geq 4$.  Let $n = k+1$, then
+$$ 2^{k+1} < (k+1)! $$
+$$ 2^{k+1} < (k+1)k! $$
+and we know that $(k+1)2^k < (k+1)k!$ since we assumed that $2^k < k!$ in our inductive hypothesis.  
+Also, we can show that $(k+1)2^k > 2 \times 2^k$ since $k \geq 4$ and it is clear that $2 \times 2^k = 2^{k+1}$.  Therefore, we have proven by induction that $2^k < k! \implies 2^{k+1} < (k+1)!, k \geq 4$ so $2^n < n!$, $\forall n \geq 4$.  
+
+\end{proof}
+
+\newpage
+\item (5 points) 
+Here is an inductive proof that all jelly beens in the world have the same 
+color! \\
+Basis ($n=1$): 
+We pick one jelly bean and clearly it has the same color as itself.\\
+Inductive hypothesis: 
+Assume that any group of $n>1$ jelly beans have the same color.\\
+Inductive step: Take $n+1$ jelly beans. Consider group A of the first 
+$1,\ldots , n$ jelly beans, and group B of the last $2,\ldots ,n+1$ jelly beans.
+By the inductive hypothesis, all jelly beans in group A have the same color, 
+and all jelly beans in group B have the same color. 
+Because the two groups share the jelly beans $2,\ldots , n$, the colors of 
+the two groups must be the same. Thus any $n+1$ jelly beans have the same color.
+
+Anyone who has ever eaten jelly beans knows the above proposition is false. 
+So what is wrong with the proof?
+
+\begin{proof}
+
+The proof is indeed incorrect.  The base case is valid: when there is only one jelly bean in the collection, every jelly bean has the same color (this is clear because there is only one of them).  It's the inductive step which is flawed.  If we examine the case when $n=2$, then there are $2$ jelly beans total.  Following the hypothesis, group A will have the first jelly bean and group B will have the second.  Using the hypothesis, we can assume each jelly bean in each group has the same color (even if we don't yet know if the two groups have the same color as eachother).  However, in this case there are no shared elements between the two groups.  In other words, the intersection of the two groups is the empty set, so the proof fails.  
+
+\end{proof}
+
+\end{enumerate}
+
+\end{document}
+
+
+
+
+
+
+
+
+

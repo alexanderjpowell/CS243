@@ -1,0 +1,168 @@
+%%%%%%%%%%%%%%%%%%%%%%%%
+% Alexander Powell
+% 
+% Discrete Structures HW9
+% 
+% 11.11.2015
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[11pt]{article}
+
+\usepackage{times,mathptm}
+\usepackage{pifont}
+\usepackage{exscale}
+\usepackage{latexsym}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{epsfig}
+
+\textwidth 6.5in
+\textheight 9in
+\oddsidemargin -0.0in
+\topmargin -0.0in
+
+\parindent 0pt     % How much the first word of a paragraph is indented. 
+\parskip 0pt       % How much extra space to leave between paragraphs.
+
+\begin{document}
+
+\begin{center}             % If you only centering 1 line use \centerline{}
+\begin{LARGE}
+{\bf CSci 243 Homework 9}
+\end{LARGE}
+\vskip 0.25cm      % vertical skip (0.25 cm)
+
+Due: 10:00 am, Wednesday, November 11 \\  % force new line
+Alexander Powell    % Your name here
+\end{center}
+
+\begin{enumerate}
+\item 
+An employee joined a company in 2015 with a starting salary of \$50,000.
+Every year this employee receives a raise of \$1000 plus 4\% of the 
+salary of the previous year.
+\begin{itemize}
+\item (3 points) Set up a recurrence relation for the salary of 
+	this employee $n$ years after 2015.
+
+\textbf{Solution: }
+
+The recurrence relation is set up as follows:
+$$ S(0) = 50000, \text{ } S(n) = 1.04 \times S(n-1) + 1000 $$
+
+\item (4 points) Find an explicit formula for the salary of this 
+	employee $n$ years after 2015.
+
+\textbf{Solution: }
+
+To find the explicit formula for the salary of the employee after $n$ years, we need to solve for the closed form of the recurrence relation.  To do this, let's see if we can find a pattern.  We know that $S(0) = 50000$ and $S(1) = (1 + 0.04)S(0) + 1000 = 5300$.  
+By continuing the sequence we get:
+$$ S(2) = (1 + 0.04)S(1) + 1000 = (1+0.04)^2S(0) + [ 1 + (1 + 0.04) ] 1000 = 56120 $$
+$$ S(3) = (1 + 0.04)S(2) + 1000 = (1+0.04)^3S(0) + [ 1 + (1 + 0.04) + (1 + 0.04)^2 ] 1000 = 59364.8 $$
+From this we can more clearly see the pattern:
+$$ S(n) = (1 + 0.04)^nS(0) + \bigg( \Sigma_{k=0}^{n-1} (1 + 0.04)^k \bigg) 1000 $$
+This is just a geometric series which we know how to solve for so we get the following explicit formula for the employee's salary.  
+$$ S(n) = (1 + 0.04)^n50000 + \dfrac{(1 + 0.04)^n - 1}{0.04} \times 1000 $$.  
+
+
+\item (3 points) What will the salary of this employee be in 2030?
+
+\textbf{Solution: }
+
+Using the above formula, the salary of the employee in 2030 will be 
+$$ S(15) = (1 + 0.04)^{15}50000 + \dfrac{(1 + 0.04)^{15} - 1}{0.04} \times 1000 = \$110070.76 $$
+
+\end{itemize}
+
+\item (10 points) 
+A DNA sequence is a string over the alphabet of $\{A, C, G, T\}$, 
+which are called bases. How many 5-base DNA sequences
+\begin{enumerate}
+\item (1 point) end with $G$? 
+\textbf{Solution: }
+
+We can think about this as $4$ bins with each bin having the option of $4$ characters.
+So, our solution is $4^4 = 256$.  
+
+\item (1 point) contain only $G$ and $T$? 
+\textbf{Solution: }
+
+This is equivalent to asking for the number of sequences of length $5$ over the alphabet $\{G,T\}$.  
+We compute this with $2^5= 32$.  
+
+\item (2 point) do not contain $A$? 
+\textbf{Solution: }
+
+This is equivalent to asking for the number of length $5$ DNA sequences over the alphabet $\{C,G,T\}$.  
+We can compute this with $3^5 = 243$.  
+
+\item (3 points) contain all four bases? 
+\textbf{Solution: }
+
+Since the sequences are of length $5$, we know that one of the bases must repeat once, so we have to multiply the number of permuations by $4$.  We must also divide the value by $2$ since the order of the repeating terms don't matter.  This gives us:
+$$ \dfrac{5!}{2} \times 4 = 240 $$
+
+\item (3 points) contain exactly three of the four bases?
+\textbf{Solution: }
+
+For each sequence, we will get rid of one base and then multiply by $4$ since there are $4$ bases.  Now, since the sequences are of length $5$, then either two of the three bases will be used twice or one base will be used three times.  In the first case we know that one base must only be used once and there are $5!$ ways to order the bases.  We must divide by $4$ for the two doubles where the order doesn't matter, so we get $\dfrac{5!}{4} = 30$ for the first case.  
+For the second case we know there are $5!$ ways to arrange the bases but we must divide by $3!$ to account for the duplicate bases.  This gives us $\dfrac{5!}{6} = 20$.  
+
+So, putting it all together we have $(30 + 20) \times 4 = 50 \times 4 = 200$.  So there are 200 length $5$ DNA sequences that contain exactly three of the four bases.  
+
+\end{enumerate}
+
+\item A bowl contains 10 red balls and 10 blue balls.
+You select balls at random without looking at them.
+\begin{enumerate}
+\item (4 points) How many balls must you select to be sure of having at least three balls of the same color?
+
+\textbf{Solution: }
+
+In the worst case you would select alternating colored balls, meaning first you would pick a red ball, then blue, then red, then blue, then red again.  Therefore, you must select 5 balls to be sure of having at least three of the same color.  
+
+\item (4 points) How many balls must you select to be sure of having at least three blue balls?
+
+\textbf{Solution: }
+
+Again, we look at the worst case scenario.  This is the case where the first 10 balls you pick out of the bowl are the red balls.  After this there are no more red balls remaining, you you continue to pick three more balls (which will be blue).  Therefore, you must select 13 balls from the bowl before you are sure of having at least three blue balls.  
+
+\end{enumerate}
+
+
+\item (6 points) How many ordered pairs of integers $(a,b)$ are needed to guarantee that
+there are two ordered pairs $(a_1,b_1)$ and $(a_2,b_2)$ such that $a_1\bmod 5=a_2\bmod 5$ and
+$b_1\bmod 5=b_2\bmod 5$?
+
+\textbf{Solution: }
+
+We know from the definition of $\bmod$ that $\forall n \in \mathbb{Z}$, $n\bmod5 = 0,1,2,3, \text{or }4$.  
+So then it is clear that $a\bmod5$ can be five values and $b\bmod5$ can be five values.  Therefore, the total number of ordered pairs equals $5 \times 5 = 25$.  Now, we want to find the number of ordered pairs of integers $(a\bmod5,b\bmod5)$ such that there exist two ordered pairs $(a_1\bmod5,b_1\bmod5)$ and $(a_2\bmod5,b_2\bmod5)$ such that 
+$$ (a_1\bmod5,b_1\bmod5) = (a_2\bmod5,b_2\bmod5). $$
+Since we know there are $25$ distinct pairs then, from the pigeon hole principle, the minimum number of pairs to satisfy the condition is $25 + 1 = 26$.  To restate, $26$ ordered pairs of integers are needed to guarantee that there are two ordered pairs $(a_1,b_1)$ and $(a_2,b_2)$ such that $a_1\bmod 5=a_2\bmod 5$ and $b_1\bmod 5=b_2\bmod 5$.  
+
+\item (6 points) How many numbers must be selected from the set $\{1,3,5,7,9,11,13,15\}$ to guarantee that at least one pair of these numbers add up to 16?
+
+\textbf{Solution: }
+
+The answer is 5 because if we take even the smallest 5 numbers from the set: $\{1,3,5,7,9\}$, then 7 and 9 add up to 16.  However, we know we can't pick less than 5 because we can't form a sum of 16 with pairs from $\{1,3,5,7\}$.  
+
+\end{enumerate}
+
+
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
